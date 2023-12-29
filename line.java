@@ -4,14 +4,17 @@ public class line{
 
 	private double x1, y1, x2, y2;
 	
-
+	private main start, end;
     public line(double x1, double y1, double x2, double y2){
 		// TODO Auto-generated constructor stub
     	
 	}
 
 	
-
+    public line(main start, main end) {
+        this.start = start;
+        this.end = end;
+    }
 	public void line(double x1, double y1, double x2, double y2) {
         this.x1 = x1;
         this.y1 = y1;
@@ -42,10 +45,39 @@ public int compareTo(line otherline) {
     } else {
         return 0; // Lines are equal in length
     }
+}
+    
+          double calculateLength1() {
+        double xDiff = end.getX() - start.getX();
+        double yDiff = end.getY() - start.getY();{
+        return Math.sqrt(xDiff * xDiff + yDiff * yDiff);
+    }
+}
+          public int compareTo1(line otherline) {
+              double thisLength = this.calculateLength();
+              double otherLength = otherline.calculateLength();
+
+              if (thisLength < otherLength) {
+                  return -1; // This line is shorter
+              } else if (thisLength > otherLength) {
+                  return 1; // This line is longer
+              } else {
+                  return 0; // Lines are equal in length
+              }
+}
+          public boolean equals(Object obj) {
+              if (this == obj) {
+                  return true;
+              }
+              if (!(obj instanceof line)) {
+                  return false;
+              }
+              line otherline = (line) obj;
+              return this.start.equals(otherline.start) && this.end.equals(otherline.end);
+          }
+      }
 
 
-}
-}
 
 
 
